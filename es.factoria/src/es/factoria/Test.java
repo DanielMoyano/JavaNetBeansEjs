@@ -7,7 +7,7 @@ package es.factoria;
 
 /**
  *
- * @author suscr
+ * @author Daniel Moyano
  */
 public class Test {
 
