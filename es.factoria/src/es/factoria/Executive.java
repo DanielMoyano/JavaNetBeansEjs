@@ -17,6 +17,17 @@ public class Executive extends Worker {
     private static final double SALARYBASE = 2500;
     private final List<Salesman> salesmen;
     private Secretary secretary;
+
+    public void setSecretary(Secretary pNewSecretary) throws OverrideException {
+        if (!pNewSecretary.hasExecutive()) {
+            pNewSecretary.setExecutive(this);
+            this.secretary = pNewSecretary;
+        }
+        else {
+            throw new OverrideException("ERROR: Salesman: " + pNewSecretary.getName() + "ya está asignado");
+        }
+
+    }
     
     public Executive(String pName, String pAddress, String pDni) {
         super(pName, pAddress, pDni);
@@ -39,5 +50,14 @@ public class Executive extends Worker {
         }
         this.setSalary(SALARYBASE + Math.round(Math.round(ventas * COMISSION /100 )));
         return this.getSalary();    
+    }
+    public String listWorkers() {
+        String msg="";
+        for (Salesman e : salesmen) {
+            msg += e.getName() + " " + e.getDni() + " " + e.getAddress() + "\n";
+        }
+        return secretary.getName() + " " + secretary.getDni() + " " + secretary.getAddress()+ "\n" + msg;
+        
+        
     }
 }

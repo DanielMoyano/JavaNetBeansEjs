@@ -41,7 +41,25 @@ public class Factory {
         if (SW) {
             workers.add(pNewWorker);
         }
-        
-        
+    }
+
+    public List<Worker> getWorkers() {
+        return workers;
+    }
+    public Worker getWorker(String pDni) throws NotFoundException {
+        //comprobar que el trabajador no exista ya (por Dni)
+        for (Worker i : workers) {
+            if (i.getDni()== pDni) {
+                return (i);
+            }
+        }
+        throw new NotFoundException("EL DNI: " + pDni + " no se encontró");
+    }
+    public String listSalaryWorkers() {
+        String msg = "";
+        for (Worker w : workers) {
+            msg += w.getName() + " " + w.getDni() + " " + w.getAddress() + "\n";
+        }
+        return msg;
     }
 }
