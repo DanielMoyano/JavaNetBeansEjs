@@ -32,6 +32,7 @@ public class Factory {
     }
     public void addWorker(Worker pNewWorker) {
         boolean SW = true;
+        //comprobar que el trabajador no exista ya (por Dni)
         for (Worker i : workers) {
             if (pNewWorker.equals(i)) {
                 SW = false;
