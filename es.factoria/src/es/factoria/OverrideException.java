@@ -10,5 +10,7 @@ package es.factoria;
  * @author Daniel Moyano
  */
 public class OverrideException extends Exception {
-    
+    public OverrideException(String msg) {
+        super(msg);
+    }
 }
